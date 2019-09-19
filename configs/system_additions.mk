@@ -44,10 +44,15 @@ PRODUCT_PACKAGES += \
 # Bluetooth Audio (A2DP)
 PRODUCT_PACKAGES += libbthost_if
 
-# MSIM manual provisioning
-PRODUCT_PACKAGES += ims-ext-common
-PRODUCT_PACKAGES += telephony-ext
-#PRODUCT_BOOT_JARS += telephony-ext
+# Telephony
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    telephony-ext
 
 # WeatherClient
 PRODUCT_PACKAGES += WeatherClient
