@@ -89,7 +89,7 @@ else
 endif
 
 ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
-$(error BOARD_KERNEL_IMAGE_NAME not defined.)
+$(warning BOARD_KERNEL_IMAGE_NAME not defined. Can it be that you use a prebuilt kernel binary?)
 endif
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 
