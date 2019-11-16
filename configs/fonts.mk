@@ -12,12 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Google fonts
+# Custom fonts configuration
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-BoldItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-BoldItalic.ttf \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-Bold.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Bold.ttf \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-Italic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Italic.ttf \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-MediumItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-MediumItalic.ttf \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-Medium.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Medium.ttf \
-    vendor/pixeldust/prebuilt/fonts/GoogleSans-Regular.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Regular.ttf
+    vendor/pixeldust/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
+
+# Fonts
+$(call inherit-product, external/google-fonts/arbutus-slab/fonts.mk)
+
+# Prebuilt fonts
+PREBUILT_FONTS := GoogleSans/GoogleSans-Bold GoogleSans/GoogleSans-Medium \
+	GoogleSans/GoogleSans-Regular GoogleSans/GoogleSans-MediumItalic \
+	GoogleSans/GoogleSans-Italic GoogleSans/GoogleSans-BoldItalic \
+	ProductSans/ProductSans-LightItalic ProductSans/ProductSans-Regular \
+	ProductSans/ProductSans-Light ProductSans/ProductSans-Thin \
+	ProductSans/ProductSans-ThinItalic ProductSans/ProductSans-Italic GoboldBold-Italic \
+	GoboldThinLight-Italic Gobold-Italic GoboldThinLight GoboldBold Gobold Amarante burnstown \
+	vcr_osd_mono road_rage neoneon dumbledor PhantomBold Cagliostro-Regular Shamshung Surfer \
+	Rosemary-Regular Coolstory-Regular Bariol-Regular SonySketch SamsungOne mexcellent \
+	LGSmartGothic Aclonica snowstorm
+
+PRODUCT_COPY_FILES += $(foreach f,$(PREBUILT_FONTS),\
+	vendor/pixeldust/prebuilt/fonts/$(f).ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/$(or $(word 2,$(subst /, ,$(f))),$(f)).ttf)
